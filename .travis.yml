@@ -10,5 +10,5 @@ language: objective-c
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -sdk iphonesimulator12.1 ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.1,name=iPhone XR'  ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
