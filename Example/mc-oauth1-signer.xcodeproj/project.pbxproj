@@ -14,6 +14,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		8C929CB078D160CAA51F7833 /* Pods_mc_oauth1_signer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027A9FEB1866E2A81C552071 /* Pods_mc_oauth1_signer_Example.framework */; };
+		B2A7BE682212E92400D9892D /* test_key_container.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B2EA22742212E814009C3BAC /* test_key_container.p12 */; };
+		B2EA22752212E815009C3BAC /* test_key_container.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B2EA22742212E814009C3BAC /* test_key_container.p12 */; };
 		C306B88021C1AB9A008E76AA /* MastercardOAuth.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C306B87F21C1AB9A008E76AA /* MastercardOAuth.podspec */; };
 		E85710446B9D74B3C9356065 /* Pods_mc_oauth1_signer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C0891400B2D1F729E96E80D /* Pods_mc_oauth1_signer_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +48,7 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7D5F1136DEBC54E54AFD8FE4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9E7511D696D028878DC497ED /* Pods-mc-oauth1-signer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B2EA22742212E814009C3BAC /* test_key_container.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_key_container.p12; sourceTree = "<group>"; };
 		C306B87F21C1AB9A008E76AA /* MastercardOAuth.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MastercardOAuth.podspec; path = ../MastercardOAuth.podspec; sourceTree = "<group>"; };
 		FD6BC7493C967CC9B0B20D8C /* Pods-mc-oauth1-signer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Tests/Pods-mc-oauth1-signer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +130,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B2EA22732212E814009C3BAC /* Resources */,
 				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
@@ -158,6 +162,14 @@
 				0C0891400B2D1F729E96E80D /* Pods_mc_oauth1_signer_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2EA22732212E814009C3BAC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B2EA22742212E814009C3BAC /* test_key_container.p12 */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				B2A7BE682212E92400D9892D /* test_key_container.p12 in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				C306B88021C1AB9A008E76AA /* MastercardOAuth.podspec in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
@@ -260,6 +273,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2EA22752212E815009C3BAC /* test_key_container.p12 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

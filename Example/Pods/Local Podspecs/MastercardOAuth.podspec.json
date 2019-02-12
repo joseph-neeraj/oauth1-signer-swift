@@ -1,19 +1,19 @@
 {
   "name": "MastercardOAuth",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "summary": "Zero dependency library for generating a Mastercard API compliant OAuth signature in Swift",
   "description": "Zero dependency library for generating a Mastercard API compliant OAuth signature in Swift.",
-  "homepage": "https://github.com/lukereichold/oauth1-signer-swift",
+  "homepage": "https://developer.mastercard.com",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "git": "luke@reikam.com"
+    "lukereichold": "luke@reikam.com"
   },
   "source": {
-    "git": "git@github.com:lukereichold/oauth1-signer-swift.git",
-    "tag": "0.4.0"
+    "git": "https://github.com/lukereichold/oauth1-signer-swift.git",
+    "tag": "0.5.0"
   },
   "swift_version": "4.2",
   "platforms": {
