@@ -15,18 +15,16 @@ class Tests: XCTestCase {
     
     func testExtractQueryParams()
     {
-        
         let encodedString = "https://sandbox.api.mastercard.com?param1=plus+value&param2=colon:value&param3=a space~".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let queryParams = URL.init(string: encodedString!)?.queryParameters()
-    XCTAssertEqual(queryParams?.count, 3, "Number of parameters are incorrect")
-       let filterResult =  queryParams?.filter({
+        XCTAssertEqual(queryParams?.count, 3, "Number of parameters are incorrect")
+        let filterResult =  queryParams?.filter({
             // this is where you determine whether to include the specific element, $0
             $0.value.contains("plus+value") ||
                 $0.value.contains("colon:value") ||
             $0.value.contains("a space~")
             // or whatever search method you're using instead
         })
-        
         XCTAssertEqual(filterResult?.count, 3, "Number of parameters are incorrect")
     }
     
@@ -36,7 +34,6 @@ class Tests: XCTestCase {
         let encodedString = "https://sandbox.api.mastercard.com?param1=plus+value&param2=colon:value&param3=a space~".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let baseURL = URL.init(string: encodedString!)?.lowercasedBaseUrl()
         XCTAssertEqual(baseURL, "https://sandbox.api.mastercard.com", "lowercasedBaseUrl() is incorrect")
-
     }
     
     
@@ -49,7 +46,6 @@ class Tests: XCTestCase {
         encodedString = "http://api.mastercard.com:80/test".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         baseURL = URL.init(string: encodedString!)?.lowercasedBaseUrl()
         XCTAssertEqual(baseURL, "http://api.mastercard.com/test", "lowercasedBaseUrl() is not removing redundant ports")
-
         
         encodedString = "https://api.mastercard.com:17443/test?query=param".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         baseURL = URL.init(string: encodedString!)?.lowercasedBaseUrl()
@@ -63,7 +59,6 @@ class Tests: XCTestCase {
         let encodedString = "https://api.mastercard.com/test?query=param#fragment".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let baseURL = URL.init(string: encodedString!)?.lowercasedBaseUrl()
         XCTAssertEqual(baseURL, "https://api.mastercard.com/test", "lowercasedBaseUrl() is removing valid port number")
-
     }
     
     
@@ -72,17 +67,13 @@ class Tests: XCTestCase {
         let encodedString = "HTTPS://API.MASTERCARD.COM/TEST".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         let baseURL = URL.init(string: encodedString!)?.lowercasedBaseUrl()
         XCTAssertEqual(baseURL, "https://api.mastercard.com/TEST", "lowercasedBaseUrl() is not lower casing schemes and host")
-
     }
     
     func testLoadPrivateKey_ShouldReturnKey()
     {
         let certificatePath = Bundle.main.path(forResource: "test_key_container", ofType: "p12")
-
         let signingKey = KeyProvider.loadPrivateKey(fromPath: certificatePath!, keyPassword: "Password1")!
-        
         XCTAssertEqual(256, SecKeyGetBlockSize(signingKey), "signingKey size is incorrect")
-
 //        XCTAssertFalse(SecKeyIsAlgorithmSupported(signingKey, .encrypt, .rsaEncryptionRaw))
 
     }
@@ -103,12 +94,9 @@ class Tests: XCTestCase {
         let header = try? OAuth.authorizationHeader(forUri: uri, method: method, payload: payloadString, consumerKey: consumerKey, signingPrivateKey: signingKey)
         
         XCTAssertTrue((header?.contains("oauth_body_hash=\"h2Pd7zlzEZjZVIKB4j94UZn/xxoR3RoCjYQ9/JdadGQ=\""))!,"OAuth body hash is incorrect")
-    XCTAssertTrue((header?.contains("oauth_consumer_key=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\""))!,"OAuth Consumer key is incorrect")
-        
+        XCTAssertTrue((header?.contains("oauth_consumer_key=\"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\""))!,"OAuth Consumer key is incorrect")
         XCTAssertTrue((header?.contains("oauth_signature_method=\"RSA-SHA256\""))!,"OAuth Signature Method is incorrect")
-        
         XCTAssertTrue((header?.contains("oauth_version=\"1.0\""))!,"OAuth Version is incorrect")
-        
     }
     
 }
