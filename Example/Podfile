@@ -7,7 +7,8 @@ target 'mc-oauth1-signer_Example' do
   pod 'Alamofire', '~> 4.0'
 
   target 'mc-oauth1-signer_Tests' do
-    inherit! :search_paths
+      pod 'MastercardOAuth', :path => '../'
+      pod 'Alamofire', '~> 4.0'
     
   end
 end

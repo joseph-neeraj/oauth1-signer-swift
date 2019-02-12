@@ -2,6 +2,7 @@ import XCTest
 @testable import MastercardOAuth
 import Alamofire
 
+
 class Tests: XCTestCase {
     
     override func setUp() {
