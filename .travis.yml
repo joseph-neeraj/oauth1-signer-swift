@@ -34,7 +34,8 @@ after_success:
       -Dsonar.swift.simulator=platform=iOS Simulator,OS=12.1,name=iPhone XR \
       -Dsonar.cfamily.build-wrapper-output=bw-output \
       -Dsonar.tests=Tests \
-#      -Dsonar.swift.coverage.reportPath=coverage.xml \
       -Dsonar.host.url=$SONAR_URL \
-      -Dsonar.login=$SONAR_TOKEN \
+      -Dsonar.login=$SONAR_TOKEN 
+#      -Dsonar.swift.coverage.reportPath=coverage.xml \
+
       
