@@ -25,16 +25,16 @@ script:
 after_success:
 - build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
 - sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner \
-      -Dsonar.projectName=$SONAR_PROJECT_NAME \
-      -Dsonar.projectKey=$SONAR_PROJECT_KEY \
-      -Dsonar.organization=$SONAR_ORGANIZATION_KEY \
+      -Dsonar.projectName=${SONAR_PROJECT_NAME} \
+      -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+      -Dsonar.organization=${SONAR_ORGANIZATION_KEY} \
       -Dsonar.sources=. \
       -Dsonar.swift.xcworkspace=mc-oauth1-signer.xcworkspace \
       -Dsonar.swift.scheme=mc-oauth1-signer-Example \
       -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" \
       -Dsonar.cfamily.build-wrapper-output=bw-output \
-      -Dsonar.host.url=$SONAR_URL \
-      -Dsonar.login=$SONAR_TOKEN \
+      -Dsonar.host.url=${SONAR_URL} \
+      -Dsonar.login=${SONAR_TOKEN} \
       -Dsonar.swift.coverage.reportPath=coverage.xml \
-      -Dsonar.exclusions=**/Pods/**,**/Tests/**  
+      -Dsonar.exclusions=**/Pods/**,**/Tests/**,*.xml,**/Example/**  
       
