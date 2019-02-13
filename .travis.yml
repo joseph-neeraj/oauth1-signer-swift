@@ -11,28 +11,30 @@ language: objective-c
 # - pod install --project-directory=Example
 
 install:
-- wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-macosx.zip
+- wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-macosx.zip 
 - unzip sonar-scanner-cli-3.3.0.1492-macosx.zip
+- wget https://sonarcloud.io/static/cpp/build-wrapper-macosx-x86.zip
+- unzip build-wrapper-macosx-x86.zip
 
 script:
-- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.1,name=iPhone XR'  ONLY_ACTIVE_ARCH=NO | xcpretty
+#- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.1,name=iPhone XR'  ONLY_ACTIVE_ARCH=NO | xcpretty
+- set -o pipefail && xcodebuild -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.0,name=iPhone XR' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
+- bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/3_Test/*.xccovarchive > coverage.xml
 
 after_success:
-- build-wrapper-macosx-x86 --out-dir bw-output make clean all 
+#- build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
 - sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner \
       -Dsonar.projectName=$SONAR_PROJECT_NAME \
       -Dsonar.projectKey=$SONAR_PROJECT_KEY \
       -Dsonar.organization=$SONAR_ORGANIZATION_KEY \
-      -Dsonar.sources=Example \
+      -Dsonar.sources=. \
       -Dsonar.swift.xcworkspace=mc-oauth1-signer.xcworkspace \
       -Dsonar.swift.scheme=mc-oauth1-signer-Example \
       -Dsonar.swift.simulator=platform=iOS Simulator,OS=12.1,name=iPhone XR \
       -Dsonar.cfamily.build-wrapper-output=bw-output \
       -Dsonar.tests=Tests \
-      -Dsonar.exclusions=**/Tests/**,**/*.xml \
-      -Dsonar.testExecutionReportPaths=tests.xml \
-      -Dsonar.swift.coverage.reportPath=coverage.xml \
+#      -Dsonar.swift.coverage.reportPath=coverage.xml \
       -Dsonar.host.url=$SONAR_URL \
       -Dsonar.login=$SONAR_TOKEN \
       
