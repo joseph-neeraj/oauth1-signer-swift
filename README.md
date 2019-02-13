@@ -1,8 +1,6 @@
 # Mastercard OAuth 1.0 Signature Client
 
-####Master branch build status: 
 ![](https://travis-ci.org/Mastercard/oauth1-signer-swift.svg?branch=master)
-
 
 ## Overview
 

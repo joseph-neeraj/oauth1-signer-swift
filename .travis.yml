@@ -9,6 +9,30 @@ language: objective-c
 # before_install:
 # - gem install cocoapods # Since Travis is not always on latest version
 # - pod install --project-directory=Example
+
+install:
+- wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-macosx.zip
+- unzip sonar-scanner-cli-3.3.0.1492-macosx.zip
+
 script:
 - set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.1,name=iPhone XR'  ONLY_ACTIVE_ARCH=NO | xcpretty
 - pod lib lint
+
+after_success:
+- build-wrapper-macosx-x86 --out-dir bw-output make clean all 
+- sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner \
+      -Dsonar.projectName=$SONAR_PROJECT_NAME \
+      -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+      -Dsonar.organization=$SONAR_ORGANIZATION_KEY \
+      -Dsonar.sources=Example \
+      -Dsonar.swift.xcworkspace=mc-oauth1-signer.xcworkspace \
+      -Dsonar.swift.scheme=mc-oauth1-signer-Example \
+      -Dsonar.swift.simulator=platform=iOS Simulator,OS=12.1,name=iPhone XR \
+      -Dsonar.cfamily.build-wrapper-output=bw-output \
+      -Dsonar.tests=Tests \
+      -Dsonar.exclusions=**/Tests/**,**/*.xml \
+      -Dsonar.testExecutionReportPaths=tests.xml \
+      -Dsonar.swift.coverage.reportPath=coverage.xml \
+      -Dsonar.host.url=$SONAR_URL \
+      -Dsonar.login=$SONAR_TOKEN \
+      
