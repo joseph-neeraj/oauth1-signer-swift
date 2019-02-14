@@ -26,7 +26,7 @@ after_success:
 - build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
 - sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner \
       -Dsonar.projectName=${SONAR_PROJECT_NAME} \
-      -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
+      -Dsonar.projectKey="${SONAR_PROJECT_KEY}" \
       -Dsonar.organization=${SONAR_ORGANIZATION_KEY} \
       -Dsonar.sources=. \
       -Dsonar.swift.xcworkspace=mc-oauth1-signer.xcworkspace \
