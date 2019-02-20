@@ -22,15 +22,15 @@ The two key pieces of information you will need are:
 
 ### Install
 
-`MastercardOAuth` is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
+`MastercardOAuth1Signer` is available through [CocoaPods](https://cocoapods.org). To install it, simply add the following line to your Podfile:
 
 ```ruby
-pod 'MastercardOAuth'
+pod 'MastercardOAuth1Signer'
 
 ```
 You can then import the framework from Swift:
 ```swift
-import MastercardOAuth
+import MastercardOAuth1Signer
 ```
 
 *Note: Use of this library as a pod requires Xcode 10 or later.*
@@ -70,4 +70,4 @@ Luke Reichold, luke@reikam.com
 
 ## License
 
-MastercardOAuth is available under the MIT license. See the LICENSE file for more info.
+MastercardOAuth1Signer is available under the MIT license. See the LICENSE file for more info.

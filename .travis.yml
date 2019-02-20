@@ -5,9 +5,9 @@ osx_image: xcode10.1
 language: objective-c
 # cache: cocoapods
 # podfile: Example/Podfile
-# before_install:
+ before_install:
 # - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
+- pod install
 
 install:
 - wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-macosx.zip 
@@ -16,11 +16,11 @@ install:
 - unzip build-wrapper-macosx-x86.zip
 
 script:
-#- set -o pipefail && xcodebuild test -enableCodeCoverage YES -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.1,name=iPhone XR'  ONLY_ACTIVE_ARCH=NO | xcpretty
-- set -o pipefail && xcodebuild -workspace Example/mc-oauth1-signer.xcworkspace -scheme mc-oauth1-signer-Example -destination 'platform=iOS Simulator,OS=12.0,name=iPhone XR' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+- set -o pipefail && xcodebuild -workspace MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer -destination 'platform=iOS Simulator,OS=12.0,name=iPhone XR' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
 - bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/3_Test/*.xccovarchive > coverage.xml
 
 after_success:
 - build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
-- sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner -Dsonar.projectName=${SONAR_PROJECT_NAME} -Dsonar.organization=${SONAR_ORGANIZATION_KEY} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.swift.xcworkspace=mc-oauth1-signer.xcworkspace -Dsonar.swift.scheme=mc-oauth1-signer-Example -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
+- sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner -Dsonar.projectName=${SONAR_PROJECT_NAME} -Dsonar.organization=${SONAR_ORGANIZATION_KEY} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
+- pod lib lint
+- test $COCOAPODS_TRUNK_TOKEN && pod trunk push

@@ -13,11 +13,11 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		687972ECFF759E5CBBC90945 /* Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB467C9A23B4128EB5CDEA3 /* Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework */; };
 		8C929CB078D160CAA51F7833 /* Pods_mc_oauth1_signer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027A9FEB1866E2A81C552071 /* Pods_mc_oauth1_signer_Example.framework */; };
+		B25DD714221DADDF006F94E3 /* MastercardOAuth1Signer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A724C2221DA5C40009B298 /* MastercardOAuth1Signer.framework */; };
 		B2A7BE682212E92400D9892D /* test_key_container.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B2EA22742212E814009C3BAC /* test_key_container.p12 */; };
 		B2EA22752212E815009C3BAC /* test_key_container.p12 in Resources */ = {isa = PBXBuildFile; fileRef = B2EA22742212E814009C3BAC /* test_key_container.p12 */; };
-		C306B88021C1AB9A008E76AA /* MastercardOAuth.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C306B87F21C1AB9A008E76AA /* MastercardOAuth.podspec */; };
+		C306B88021C1AB9A008E76AA /* MastercardOAuth1Signer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C306B87F21C1AB9A008E76AA /* MastercardOAuth1Signer.podspec */; };
 		CB8D8348B9CC585E2D583BEF /* Pods_mc_oauth1_signer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2A7BE6D2212FE9300D9892D /* Pods_mc_oauth1_signer_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,15 +29,47 @@
 			remoteGlobalIDString = 607FACCF1AFB9204008FA782;
 			remoteInfo = "mc-oauth1-signer";
 		};
+		B25DD718221DAF57006F94E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B2B65624221D9AAB000DCF1B;
+			remoteInfo = MastercardOAuth1Signer;
+		};
+		B2A724C1221DA5C40009B298 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2B65625221D9AAB000DCF1B;
+			remoteInfo = MastercardOAuth1Signer;
+		};
+		B2A724C3221DA5C40009B298 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2B6562E221D9AAB000DCF1B;
+			remoteInfo = MastercardOAuth1SignerTests;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B2212732221DA4EA0039D11A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		027A9FEB1866E2A81C552071 /* Pods_mc_oauth1_signer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mc_oauth1_signer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C0891400B2D1F729E96E80D /* Pods_mc_oauth1_signer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mc_oauth1_signer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0ED7E502AB41DD04F97292BB /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		337C9A49E3B71B8DA05B137D /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		3F30F462A58AADB70BBB99A6 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		4A87B833B267B196F0DE446B /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		4474CF95B0365B327D4AEB80 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* mc-oauth1-signer_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mc-oauth1-signer_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -50,12 +82,23 @@
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		7D5F1136DEBC54E54AFD8FE4 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		9BB467C9A23B4128EB5CDEA3 /* Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9E7511D696D028878DC497ED /* Pods-mc-oauth1-signer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example.release.xcconfig"; sourceTree = "<group>"; };
+		B221272D221DA34F0039D11A /* MastercardOAuth1Signer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MastercardOAuth1Signer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B2A724B2221DA5C40009B298 /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
+		B2A724B3221DA5C40009B298 /* MastercardOAuth1Signer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MastercardOAuth1Signer.h; sourceTree = "<group>"; };
+		B2A724B4221DA5C40009B298 /* String+OAuth1Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+OAuth1Signer.swift"; sourceTree = "<group>"; };
+		B2A724B5221DA5C40009B298 /* KeyProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyProvider.swift; sourceTree = "<group>"; };
+		B2A724B6221DA5C40009B298 /* URL+OAuth1Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+OAuth1Signer.swift"; sourceTree = "<group>"; };
+		B2A724B7221DA5C40009B298 /* Data+OAuth1Signer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+OAuth1Signer.swift"; sourceTree = "<group>"; };
+		B2A724B8221DA5C40009B298 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2A724BA221DA5C40009B298 /* MastercardOAuth1SignerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MastercardOAuth1SignerTests.swift; sourceTree = "<group>"; };
+		B2A724BB221DA5C40009B298 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MastercardOAuth1Signer.xcodeproj; sourceTree = "<group>"; };
 		B2A7BE692212FE7B00D9892D /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A7BE6B2212FE7F00D9892D /* MastercardOAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MastercardOAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A7BE6D2212FE9300D9892D /* Pods_mc_oauth1_signer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_mc_oauth1_signer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2EA22742212E814009C3BAC /* test_key_container.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test_key_container.p12; sourceTree = "<group>"; };
-		C306B87F21C1AB9A008E76AA /* MastercardOAuth.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MastercardOAuth.podspec; path = ../MastercardOAuth.podspec; sourceTree = "<group>"; };
+		C306B87F21C1AB9A008E76AA /* MastercardOAuth1Signer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = MastercardOAuth1Signer.podspec; path = ../MastercardOAuth1Signer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		EE53A07BE95F306275EDA83E /* Pods-mc-oauth1-signer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc-oauth1-signer_Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B25DD714221DADDF006F94E3 /* MastercardOAuth1Signer.framework in Frameworks */,
 				8C929CB078D160CAA51F7833 /* Pods_mc_oauth1_signer_Example.framework in Frameworks */,
 				CB8D8348B9CC585E2D583BEF /* Pods_mc_oauth1_signer_Example.framework in Frameworks */,
 			);
@@ -72,7 +116,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				687972ECFF759E5CBBC90945 /* Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,10 +125,8 @@
 		275C0AE8ACF74BE19BEB7469 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3F30F462A58AADB70BBB99A6 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */,
-				9E7511D696D028878DC497ED /* Pods-mc-oauth1-signer_Example.release.xcconfig */,
-				4A87B833B267B196F0DE446B /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.debug.xcconfig */,
-				0ED7E502AB41DD04F97292BB /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.release.xcconfig */,
+				4474CF95B0365B327D4AEB80 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */,
+				EE53A07BE95F306275EDA83E /* Pods-mc-oauth1-signer_Example.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -93,6 +134,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				B2A724B0221DA5C40009B298 /* MastercardOAuth1Signer */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Example */,
 				607FACE81AFB9204008FA782 /* Tests */,
@@ -154,7 +196,7 @@
 		607FACF51AFB993E008FA782 /* Podspec Metadata */ = {
 			isa = PBXGroup;
 			children = (
-				C306B87F21C1AB9A008E76AA /* MastercardOAuth.podspec */,
+				C306B87F21C1AB9A008E76AA /* MastercardOAuth1Signer.podspec */,
 				337C9A49E3B71B8DA05B137D /* README.md */,
 				7D5F1136DEBC54E54AFD8FE4 /* LICENSE */,
 			);
@@ -164,6 +206,7 @@
 		8FC8B533DAD88D9BF0459DD8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B221272D221DA34F0039D11A /* MastercardOAuth1Signer.framework */,
 				B2A7BE6D2212FE9300D9892D /* Pods_mc_oauth1_signer_Example.framework */,
 				B2A7BE6B2212FE7F00D9892D /* MastercardOAuth.framework */,
 				B2A7BE692212FE7B00D9892D /* Alamofire.framework */,
@@ -172,6 +215,49 @@
 				9BB467C9A23B4128EB5CDEA3 /* Pods_mc_oauth1_signer_Example_mc_oauth1_signer_Tests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B2A724B0221DA5C40009B298 /* MastercardOAuth1Signer */ = {
+			isa = PBXGroup;
+			children = (
+				B2A724B1221DA5C40009B298 /* MastercardOAuth1Signer */,
+				B2A724B9221DA5C40009B298 /* MastercardOAuth1SignerTests */,
+				B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */,
+			);
+			name = MastercardOAuth1Signer;
+			path = ../MastercardOAuth1Signer;
+			sourceTree = "<group>";
+		};
+		B2A724B1221DA5C40009B298 /* MastercardOAuth1Signer */ = {
+			isa = PBXGroup;
+			children = (
+				B2A724B2221DA5C40009B298 /* OAuth.swift */,
+				B2A724B3221DA5C40009B298 /* MastercardOAuth1Signer.h */,
+				B2A724B4221DA5C40009B298 /* String+OAuth1Signer.swift */,
+				B2A724B5221DA5C40009B298 /* KeyProvider.swift */,
+				B2A724B6221DA5C40009B298 /* URL+OAuth1Signer.swift */,
+				B2A724B7221DA5C40009B298 /* Data+OAuth1Signer.swift */,
+				B2A724B8221DA5C40009B298 /* Info.plist */,
+			);
+			path = MastercardOAuth1Signer;
+			sourceTree = "<group>";
+		};
+		B2A724B9221DA5C40009B298 /* MastercardOAuth1SignerTests */ = {
+			isa = PBXGroup;
+			children = (
+				B2A724BA221DA5C40009B298 /* MastercardOAuth1SignerTests.swift */,
+				B2A724BB221DA5C40009B298 /* Info.plist */,
+			);
+			path = MastercardOAuth1SignerTests;
+			sourceTree = "<group>";
+		};
+		B2A724BD221DA5C40009B298 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B2A724C2221DA5C40009B298 /* MastercardOAuth1Signer.framework */,
+				B2A724C4221DA5C40009B298 /* MastercardOAuth1SignerTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B2EA22732212E814009C3BAC /* Resources */ = {
@@ -194,10 +280,12 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				BDC85F4465CD459B8FF889B4 /* [CP] Embed Pods Frameworks */,
+				B2212732221DA4EA0039D11A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				B25DD719221DAF57006F94E3 /* PBXTargetDependency */,
 			);
 			name = "mc-oauth1-signer_Example";
 			productName = "mc-oauth1-signer";
@@ -208,11 +296,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "mc-oauth1-signer_Tests" */;
 			buildPhases = (
-				95653C38996D463C336E10D1 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				E00381C8482D5574640CBF9D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,6 +346,12 @@
 			mainGroup = 607FACC71AFB9204008FA782;
 			productRefGroup = 607FACD11AFB9204008FA782 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = B2A724BD221DA5C40009B298 /* Products */;
+					ProjectRef = B2A724BC221DA5C40009B298 /* MastercardOAuth1Signer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				607FACCF1AFB9204008FA782 /* mc-oauth1-signer_Example */,
@@ -267,6 +359,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		B2A724C2221DA5C40009B298 /* MastercardOAuth1Signer.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MastercardOAuth1Signer.framework;
+			remoteRef = B2A724C1221DA5C40009B298 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		B2A724C4221DA5C40009B298 /* MastercardOAuth1SignerTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = MastercardOAuth1SignerTests.xctest;
+			remoteRef = B2A724C3221DA5C40009B298 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		607FACCE1AFB9204008FA782 /* Resources */ = {
@@ -276,7 +385,7 @@
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				B2A7BE682212E92400D9892D /* test_key_container.p12 in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
-				C306B88021C1AB9A008E76AA /* MastercardOAuth.podspec in Resources */,
+				C306B88021C1AB9A008E76AA /* MastercardOAuth1Signer.podspec in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -314,28 +423,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		95653C38996D463C336E10D1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		BDC85F4465CD459B8FF889B4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,44 +431,18 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example-frameworks.sh",
+				"${SRCROOT}/../Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MastercardOAuth/MastercardOAuth.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MastercardOAuth.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E00381C8482D5574640CBF9D /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/MastercardOAuth/MastercardOAuth.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MastercardOAuth.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests/Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-mc-oauth1-signer_Example/Pods-mc-oauth1-signer_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -411,6 +472,11 @@
 			isa = PBXTargetDependency;
 			target = 607FACCF1AFB9204008FA782 /* mc-oauth1-signer_Example */;
 			targetProxy = 607FACE61AFB9204008FA782 /* PBXContainerItemProxy */;
+		};
+		B25DD719221DAF57006F94E3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MastercardOAuth1Signer;
+			targetProxy = B25DD718221DAF57006F94E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -539,7 +605,7 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F30F462A58AADB70BBB99A6 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */;
+			baseConfigurationReference = 4474CF95B0365B327D4AEB80 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -558,7 +624,7 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E7511D696D028878DC497ED /* Pods-mc-oauth1-signer_Example.release.xcconfig */;
+			baseConfigurationReference = EE53A07BE95F306275EDA83E /* Pods-mc-oauth1-signer_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -578,7 +644,6 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A87B833B267B196F0DE446B /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FARWN7FEXX;
@@ -599,7 +664,6 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ED7E502AB41DD04F97292BB /* Pods-mc-oauth1-signer_Example-mc-oauth1-signer_Tests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = FARWN7FEXX;

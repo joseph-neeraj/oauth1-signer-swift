@@ -1,12 +1,12 @@
 import UIKit
 import Alamofire
-import MastercardOAuth
+import MastercardOAuth1Signer
 
 final class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       // requestService()
+        requestService()
     }
 
     func requestService() {
