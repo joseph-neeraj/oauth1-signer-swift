@@ -78,7 +78,7 @@ private extension OAuth {
         if payload != nil {
             oauthParams["oauth_body_hash"] = payload?.sha256()?.base64String() ?? ""
         }
-        oauthParams["oauth_consumer_key"] = consumerKey.addingPercentEncoding(withAllowedCharacters: .alphanumerics)
+        oauthParams["oauth_consumer_key"] = consumerKey
         oauthParams["oauth_nonce"] = nonce()
         oauthParams["oauth_signature_method"] = "RSA-SHA256"
         oauthParams["oauth_timestamp"] = currentUnixTimestamp()
