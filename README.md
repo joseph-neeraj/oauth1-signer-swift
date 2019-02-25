@@ -15,6 +15,8 @@
     * [Loading the Signing Key](#loading-the-signing-key) 
     * [Creating the OAuth Authorization Header](#creating-the-oauth-authorization-header)
     * [Example](#example)
+    * [Integrating with OpenAPI Generator API Client Libraries](#integrating-with-openapi-generator-api-client-libraries)
+
 
 
 ## Overview <a name="overview"></a>
@@ -91,6 +93,39 @@ Example usage:
                                      "Accept": "application/json",
                                     "Referer": "api.mastercard.com"]
 ```
+### Integrating with OpenAPI Generator API Client Libraries <a name="integrating-with-openapi-generator-api-client-libraries"></a>
+
+[OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) generates API client libraries from [OpenAPI Specs](https://github.com/OAI/OpenAPI-Specification). 
+
+Open API generator for Swift 4 generate client library with Alamofire. To integrate auth header with client library, follow below steps:
+
+1. Create request adaptor class and implement "adapt:" method. Add logic to insert authentication header in the request.
+```swift
+    final class RequestAuthAdapter: RequestAdapter {
+
+        func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
+        var urlRequest = urlRequest
+        let certificatePath = Bundle(for: type(of: self)).path(forResource: "<<FILENAME>>", ofType: "p12")
+        let signingKey = KeyProvider.loadPrivateKey(fromPath: certificatePath!, keyPassword: "<<PASSWORD>>")!
+        let consumerKey = "<<CONSUMER_KEY>>"
+        var payloadString :String? = nil
+        if urlRequest.httpBody != nil
+        {
+            payloadString = String.init(data: urlRequest.httpBody!, encoding: .utf8)
+        }
+        let  header = try? OAuth.authorizationHeader(forUri: urlRequest.url!, method: urlRequest.httpMethod!, payload: payloadString, consumerKey: consumerKey, signingPrivateKey: signingKey)
+        urlRequest.setValue(header!, forHTTPHeaderField: "Authorization")
+        return urlRequest
+        }
+    }
+```
+2. In Open API Client library, open "AlamofireImplementations.swift". Find the initalization of SessionManager and assign the RequestAuthAdapter to it.
+```swift
+    let manager = createSessionManager()
+    manager.adapter = RequestAuthAdapter()
+```
+
+That's it. This will add Authentication Header to each request going to the server from Open API client library. 
 
 ## Author
 
