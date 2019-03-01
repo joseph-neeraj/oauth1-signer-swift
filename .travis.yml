@@ -1,12 +1,13 @@
 # references:
 # * https://www.objc.io/issues/6-build-tools/travis-ci/
 # * https://github.com/supermarin/xcpretty#usage
+git:
+ depth: false  # "Shallow clone detected during the analysis"
+   
 osx_image: xcode10.1
 language: objective-c
-# cache: cocoapods
-# podfile: Example/Podfile
+
 before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
 - pod install
 
 install:
