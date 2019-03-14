@@ -21,7 +21,8 @@ script:
 - bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/3_Test/*.xccovarchive > coverage.xml
 
 after_success:
-- test "$WITH_SONAR_ANALYSIS" = "true" && build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all && sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner -Dsonar.projectName=${SONAR_PROJECT_NAME} -Dsonar.organization=${SONAR_ORGANIZATION_KEY} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
+- test "$WITH_SONAR_ANALYSIS" = "true" && build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
+- test "$WITH_SONAR_ANALYSIS" = "true" && sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner -Dsonar.projectName=${SONAR_PROJECT_NAME} -Dsonar.organization=${SONAR_ORGANIZATION_KEY} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
 - pod lib lint
 - test $COCOAPODS_TRUNK_TOKEN && pod trunk push
 - pod trunk me clean-sessions --all
