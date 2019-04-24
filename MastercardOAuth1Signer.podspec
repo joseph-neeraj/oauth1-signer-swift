@@ -1,4 +1,4 @@
-# run `pod lib lint MastercardOAuth.podspec' to validate before submitting
+# run `pod lib lint MastercardOAuth1Signer.podspec' to validate before submitting
 
 Pod::Spec.new do |s|
   s.name             = 'MastercardOAuth1Signer'

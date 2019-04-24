@@ -2,7 +2,7 @@
 
 [![](https://travis-ci.org/Mastercard/oauth1-signer-swift.svg?branch=master)](https://travis-ci.org/Mastercard/oauth1-signer-swift)
 [![](https://sonarcloud.io/api/project_badges/measure?project=Mastercard_oauth1-signer-swift&metric=alert_status)](https://sonarcloud.io/dashboard?id=Mastercard_oauth1-signer-swift) 
-[![](https://img.shields.io/cocoapods/v/MastercardOAuth1Signer.svg?style=flat)](https://cocoapods.org/pods/MastercardOAuth1Signer)
+[![](https://img.shields.io/cocoapods/v/MastercardOAuth1Signer.svg?style=flat&color=blue)](https://cocoapods.org/pods/MastercardOAuth1Signer)
 [![](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/Mastercard/oauth1-signer-swift/blob/master/LICENSE)
 
 ## Table of Contents
