@@ -54,7 +54,8 @@ import MastercardOAuth1Signer
 
 ### Loading the Signing Key <a name="loading-the-signing-key"></a>
 
-You can use the utility `KeyProvider.swift` to create a `SecKey` object representing your developer private key. Simply pass in a bundle path for your PKCS#12 key store along with its password:
+You can use the utility `KeyProvider.swift` to create a `SecKey` object representing your developer private key. 
+For that, simply pass in a bundle path for your PKCS#12 key store along with its password:
 
 ```swift
 let signingKey = KeyProvider.loadPrivateKey(fromPath: certificatePath, keyPassword: "<<PASSWORD>>")!
@@ -77,7 +78,6 @@ To run the example project, first clone this repo and then `pod install` from th
 Example usage:
 
 ```swift
-  
 let uri = URL(string: "https://sandbox.api.mastercard.com/service")!
 let method = "GET"
 let examplePayload: [String: String] = ["languageId": 1,
@@ -99,13 +99,14 @@ let headers: HTTPHeaders = ["Authorization": header!,
 [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) generates API client libraries from [OpenAPI Specs](https://github.com/OAI/OpenAPI-Specification). 
 It provides generators and library templates for supporting multiple languages and frameworks.
 
-OpenAPI generator for Swift 4 generates client libraries using Alamofire. To integrate MastercardOAuth1Signer with your client library, follow the below steps:
+OpenAPI generator for Swift 4 generates client libraries using [Alamofire](https://github.com/Alamofire/Alamofire). 
+To use MastercardOAuth1Signer in a generated client library, follow the below steps:
 
-1. Create a request adaptor class and implement the "adapt:" method. Add logic to insert the `Authorization` header in the request.
+1. Create a class extending `RequestAdapter`
+2. Implement the `adapt:` method with logic to compute and add the `Authorization` header to requests:
 
 ```swift
 final class RequestAuthAdapter: RequestAdapter {
-
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         var urlRequest = urlRequest
         let certificatePath = Bundle(for: type(of: self)).path(forResource: "<<FILENAME>>", ofType: "p12")
@@ -116,14 +117,14 @@ final class RequestAuthAdapter: RequestAdapter {
         {
             payloadString = String.init(data: urlRequest.httpBody!, encoding: .utf8)
         }
-        let  header = try? OAuth.authorizationHeader(forUri: urlRequest.url!, method: urlRequest.httpMethod!, payload: payloadString, consumerKey: consumerKey, signingPrivateKey: signingKey)
+        let header = try? OAuth.authorizationHeader(forUri: urlRequest.url!, method: urlRequest.httpMethod!, payload: payloadString, consumerKey: consumerKey, signingPrivateKey: signingKey)
         urlRequest.setValue(header!, forHTTPHeaderField: "Authorization")
         return urlRequest
     }
 }
 
 ```
-2. In the OpenAPI Client library, open "AlamofireImplementations.swift". Find the initalization of SessionManager and assign the RequestAuthAdapter to it.
+2. Open the generated `AlamofireImplementations.swift`. Find the initialization of `SessionManager` and assign the `RequestAuthAdapter` to it:
 ```swift
 let manager = createSessionManager()
 manager.adapter = RequestAuthAdapter()
