@@ -14,7 +14,7 @@ before_install:
 - pod install
 
 install:
-- test "$WITH_SONAR_ANALYSIS" = "true" && wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-macosx.zip && unzip sonar-scanner-cli-3.3.0.1492-macosx.zip && wget https://sonarcloud.io/static/cpp/build-wrapper-macosx-x86.zip && unzip build-wrapper-macosx-x86.zip
+- test "$WITH_SONAR_ANALYSIS" = "true" && wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-macosx.zip && unzip sonar-scanner-cli-$SONAR_SCANNER_VERSION-macosx.zip && wget https://sonarcloud.io/static/cpp/build-wrapper-macosx-x86.zip && unzip build-wrapper-macosx-x86.zip
 
 script:
 - set -o pipefail && xcodebuild -workspace MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer -destination 'platform=iOS Simulator,OS=12.0,name=iPhone XR' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
@@ -22,4 +22,4 @@ script:
 
 after_success:
 - test "$WITH_SONAR_ANALYSIS" = "true" && build-wrapper-macosx-x86/build-wrapper-macosx-x86 --out-dir bw-output make clean all 
-- test "$WITH_SONAR_ANALYSIS" = "true" && sonar-scanner-3.3.0.1492-macosx/bin/sonar-scanner -Dsonar.projectName=${SONAR_PROJECT_NAME} -Dsonar.organization=${SONAR_ORGANIZATION_KEY} -Dsonar.projectKey=${SONAR_PROJECT_KEY} -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=${SONAR_URL} -Dsonar.login=${SONAR_TOKEN} -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
+- test "$WITH_SONAR_ANALYSIS" = "true" && sonar-scanner-$SONAR_SCANNER_VERSION-macosx/bin/sonar-scanner -Dsonar.projectName=$SONAR_PROJECT_NAME -Dsonar.organization=$SONAR_ORGANIZATION_KEY -Dsonar.projectKey=$SONAR_PROJECT_KEY -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=12.1,name=iPhone XR" -Dsonar.cfamily.build-wrapper-output=bw-output -Dsonar.host.url=$SONAR_URL -Dsonar.login=$SONAR_TOKEN -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-$SONAR_SCANNER_VERSION-macosx/**
