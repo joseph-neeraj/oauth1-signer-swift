@@ -53,7 +53,12 @@ private extension OAuth {
     }
     
     static func signatureBaseString(httpMethod: String, baseUri: String, paramString: String) -> String {
-        let escapedBaseUri = baseUri.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? ""
+        
+        let generalDelimitersToEncode = ":#[]@/?" //added custom char set because default one doesn't include +
+        let subDelimitersToEncode = "!$&'()*+,;="
+        var allowedCharacterSet = CharacterSet.urlQueryAllowed
+        allowedCharacterSet.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
+        let escapedBaseUri = baseUri.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? ""
         
         return httpMethod.uppercased()
             + "&"
@@ -70,7 +75,7 @@ private extension OAuth {
         let validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return randomBytes.map { randomByte in
             return validChars[Int(randomByte % UInt8(validChars.count))]
-        }.joined()
+            }.joined()
     }
     
     static func oauthParameters(withKey consumerKey: String, payload: String?) -> [String: String] {
@@ -90,12 +95,15 @@ private extension OAuth {
                                  oauthParameters: [String: String]) -> String {
         
         var allParameters = [(key: String, values: [String])]()
+        
+        let sortedOauthParams = oauthParameters.sorted { $0.0 < $1.0 }.map { (key: $0.key, values: [$0.value])}
+        allParameters += sortedOauthParams
+        
         if let queryParams = queryParameters {
             allParameters += queryParams.sorted { $0.0 < $1.0 }.map {(key: $0.0, values: Array($0.value)) }
         }
         
-        let sortedOauthParams = oauthParameters.sorted { $0.0 < $1.0 }.map { (key: $0.key, values: [$0.value])}
-        allParameters += sortedOauthParams
+        allParameters = allParameters.sorted { $0.0 < $1.0 }.map {(key: $0.0, values: Array($0.values)) }
         
         var paramString = allParameters.reduce(into: "") { combined, keyPair in
             keyPair.values.sorted().forEach { value in
