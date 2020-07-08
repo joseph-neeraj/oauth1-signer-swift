@@ -322,7 +322,6 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = FARWN7FEXX;
 						LastSwiftMigration = 1010;
 						ProvisioningStyle = Manual;
 					};
@@ -340,6 +339,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -604,16 +604,16 @@
 			baseConfigurationReference = 4474CF95B0365B327D4AEB80 /* Pods-mc-oauth1-signer_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FARWN7FEXX;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "mc-oauth1-signer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mastercard.mc-oauth1-signer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Mastercard Wildcard Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
@@ -623,9 +623,9 @@
 			baseConfigurationReference = EE53A07BE95F306275EDA83E /* Pods-mc-oauth1-signer_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = FARWN7FEXX;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_TESTABILITY = NO;
 				INFOPLIST_FILE = "mc-oauth1-signer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -633,7 +633,7 @@
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mastercard.mc-oauth1-signer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "Mastercard Wildcard Development Profile";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
