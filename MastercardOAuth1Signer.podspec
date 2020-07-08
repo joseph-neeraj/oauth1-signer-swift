@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'MastercardOAuth1Signer'
-  s.version          = '1.0.1'
+  s.version          = '1.1.0'
   s.summary          = 'Zero dependency library for generating a Mastercard API compliant OAuth signature'
 
   s.description      = <<-DESC
