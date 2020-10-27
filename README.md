@@ -133,7 +133,7 @@ manager.adapter = RequestAuthAdapter()
 
 See also:
 * [OpenAPI Generator (executable)](https://mvnrepository.com/artifact/org.openapitools/openapi-generator-cli)
-* [CONFIG OPTIONS for swift4](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/swift4.md)
+* [CONFIG OPTIONS for swift4](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/swift4-deprecated.md)
 
 ## Authors
 
