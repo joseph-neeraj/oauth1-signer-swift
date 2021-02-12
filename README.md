@@ -100,19 +100,18 @@ let headers: HTTPHeaders = ["Authorization": header!,
 [OpenAPI Generator](https://github.com/OpenAPITools/openapi-generator) generates API client libraries from [OpenAPI Specs](https://github.com/OAI/OpenAPI-Specification). 
 It provides generators and library templates for supporting multiple languages and frameworks.
 
-OpenAPI generator for Swift 4 generates client libraries using [Alamofire](https://github.com/Alamofire/Alamofire). 
-To use MastercardOAuth1Signer in a generated client library, follow the below steps:
+To use MastercardOAuth1Signer with a generated client library in Swift 5, follow the below steps:
 
-1. Create a class extending `RequestAdapter`
-2. Implement the `adapt:` method with logic to compute and add the `Authorization` header to requests:
-
+1. Create a new class to which generates and adds an auth header in the URLRequest.
 ```swift
-final class RequestAuthAdapter: RequestAdapter {
-    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-        var urlRequest = urlRequest
-        let certificatePath = Bundle(for: type(of: self)).path(forResource: "<<FILENAME>>", ofType: "p12")
+import MastercardOAuth1Signer
+
+class RequestAuthDecorator: NSObject {
+    static func addAuthHeaders(request: URLRequest) -> URLRequest {
+        var urlRequest = request
+        let certificatePath = Bundle(for: RequestAuthDecorator.self).path(forResource: "<<FILENAME>>", ofType: "p12")
         let signingKey = KeyProvider.loadPrivateKey(fromPath: certificatePath!, keyPassword: "<<PASSWORD>>")!
-        let consumerKey = "<<CONSUMER_KEY>>"
+        let consumerKey = "CONSUMER_KEY"
         var payloadString :String? = nil
         if urlRequest.httpBody != nil
         {
@@ -120,15 +119,50 @@ final class RequestAuthAdapter: RequestAdapter {
         }
         let header = try? OAuth.authorizationHeader(forUri: urlRequest.url!, method: urlRequest.httpMethod!, payload: payloadString, consumerKey: consumerKey, signingPrivateKey: signingKey)
         urlRequest.setValue(header!, forHTTPHeaderField: "Authorization")
-        return urlRequest
+        return urlRequest;
     }
+}
+```
+2. Create a subclass of 'URLSessionRequestBuilder' & 'URLSessionDecodableRequestBuilder' and override the 'createUrlRequest' method in both classes to insert the auth header in the request.
+
+```swift
+class CustomURLSessionRequestBuilder<T>: URLSessionRequestBuilder<T> {
+    
+    override func createURLRequest(urlSession: URLSession, method: HTTPMethod, encoding: ParameterEncoding, headers: [String : String]) throws -> URLRequest {
+        let request: URLRequest = try super.createURLRequest(urlSession: urlSession, method: method, encoding: encoding, headers: headers);
+        let requestWithAuthHeader = RequestAuthDecorator.addAuthHeaders(request: request);
+        return requestWithAuthHeader;
+    }
+  
+}
+
+class CustomURLSessionDecodableRequestBuilder<T:Decodable>: URLSessionDecodableRequestBuilder<T> {
+    
+    override func createURLRequest(urlSession: URLSession, method: HTTPMethod, encoding: ParameterEncoding, headers: [String : String]) throws -> URLRequest {
+        let request: URLRequest = try super.createURLRequest(urlSession: urlSession, method: method, encoding: encoding, headers: headers);
+        let requestWithAuthHeader = RequestAuthDecorator.addAuthHeaders(request: request);
+        return requestWithAuthHeader;
+    }
+
 }
 
 ```
-2. Open the generated `AlamofireImplementations.swift`. Find the initialization of `SessionManager` and assign the `RequestAuthAdapter` to it:
+3. Create a subclass of 'RequestBuilderFactory' to override 'getBuilder' & 'getNonDecodableBuilder'. Make these methods to return above created 'CustomURLSessionRequestBuilder' & 'CustomURLSessionDecodableRequestBuilder' respectively.
 ```swift
-let manager = createSessionManager()
-manager.adapter = RequestAuthAdapter()
+class CustomURLSessionRequestBuilderFactory: RequestBuilderFactory {
+    func getNonDecodableBuilder<T>() -> RequestBuilder<T>.Type {
+        return CustomURLSessionRequestBuilder<T>.self
+    }
+
+    func getBuilder<T:Decodable>() -> RequestBuilder<T>.Type {
+        return CustomURLSessionDecodableRequestBuilder<T>.self
+    }
+}
+```
+4. Open the generated `APIs.swift` and assign the `CustomURLSessionRequestBuilderFactory` to requestBuilderFactory.
+```swift
+    public static var requestBuilderFactory: RequestBuilderFactory = CustomURLSessionRequestBuilderFactory()
+
 ```
 
 See also:
