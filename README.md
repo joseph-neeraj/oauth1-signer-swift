@@ -159,7 +159,7 @@ class CustomURLSessionRequestBuilderFactory: RequestBuilderFactory {
     }
 }
 ```
-4. Open the generated `APIs.swift` and assign the `CustomURLSessionRequestBuilderFactory` to requestBuilderFactory.
+4. Open the generated `APIs.swift` and assign the `CustomURLSessionRequestBuilderFactory` to requestBuilderFactory in 'OpenAPIClientAPI' class.
 ```swift
     public static var requestBuilderFactory: RequestBuilderFactory = CustomURLSessionRequestBuilderFactory()
 
