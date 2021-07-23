@@ -1,34 +1,55 @@
 name: Sonar
-
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
-
-on:
+'on':
   push:
-    branches: [ master ]
+    branches:
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
   schedule:
-    - cron: "0 16 * * *"
-
+    - cron: 0 16 * * *
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: | 
-        pod install
-        wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-macosx.zip && unzip sonar-scanner-cli-4.5.0.2216-macosx.zip && wget https://sonarcloud.io/static/cpp/build-wrapper-macosx-x86.zip && unzip build-wrapper-macosx-x86.zip
-    - name: Run tests
-      run: | 
-        set -o pipefail && xcodebuild -workspace MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 11' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" ONLY_ACTIVE_ARCH=NO | xcpretty
-        bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/ > coverage.xml
-    - name: Sonar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: |
-        sonar-scanner-4.5.0.2216-macosx/bin/sonar-scanner -Dsonar.projectName=oauth1-signer-swift -Dsonar.organization=mastercard -Dsonar.projectKey=Mastercard_oauth1-signer-swift -Dsonar.sources=. -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace -Dsonar.swift.scheme=MastercardOAuth1Signer -Dsonar.swift.simulator="platform=iOS Simulator,OS=14.3,name=iPhone 11" -Dsonar.cfamily.build-wrapper-output.bypass=true -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN -Dsonar.coverageReportPaths=coverage.xml -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/** -Dsonar.c.file.suffixes=- -Dsonar.cpp.file.suffixes=- -Dsonar.objc.file.suffixes=-
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: >
+          pod install
+
+          wget
+          https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.5.0.2216-macosx.zip
+          && unzip sonar-scanner-cli-4.5.0.2216-macosx.zip && wget
+          https://sonarcloud.io/static/cpp/build-wrapper-macosx-x86.zip && unzip
+          build-wrapper-macosx-x86.zip
+      - name: Run tests
+        run: >
+          set -o pipefail && xcodebuild -workspace
+          MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer
+          -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 11'
+          -derivedDataPath Build/ -enableCodeCoverage YES clean build test
+          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" ONLY_ACTIVE_ARCH=NO |
+          xcpretty
+
+          bash xccov-to-sonarqube-generic.sh Build/Logs/Test/*.xcresult/ >
+          coverage.xml
+      - name: Sonar
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+          SONAR_TOKEN: '${{ secrets.SONAR_TOKEN }}'
+        run: >
+          sonar-scanner-4.5.0.2216-macosx/bin/sonar-scanner
+          -Dsonar.projectName=oauth1-signer-swift
+          -Dsonar.organization=mastercard
+          -Dsonar.projectKey=Mastercard_oauth1-signer-swift -Dsonar.sources=.
+          -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace
+          -Dsonar.swift.scheme=MastercardOAuth1Signer
+          -Dsonar.swift.simulator="platform=iOS Simulator,OS=14.3,name=iPhone
+          11" -Dsonar.cfamily.build-wrapper-output.bypass=true
+          -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+          -Dsonar.coverageReportPaths=coverage.xml
+          -Dsonar.exclusions=**/Pods/**,**/Tests/**,**/MastercardOAuth1SignerTests/**,*.xml,**/Example/**,**/Build/**,**/sonar-scanner-3.3.0.1492-macosx/**
+          -Dsonar.c.file.suffixes=- -Dsonar.cpp.file.suffixes=-
+          -Dsonar.objc.file.suffixes=-

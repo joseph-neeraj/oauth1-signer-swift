@@ -1,26 +1,28 @@
 name: Build & Test
-
 env:
   DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
-
-on:
+'on':
   push:
-    branches: [ master ]
+    branches:
+      - main
   pull_request:
-    branches: [ master ]
+    branches:
+      - main
   schedule:
-    - cron: "0 16 * * *"
-
+    - cron: 0 16 * * *
 jobs:
   build:
-
     runs-on: macos-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Dependencies
-      run: | 
-        pod install
-    - name: Run tests
-      run: | 
-        set -o pipefail && xcodebuild -workspace MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 11' -derivedDataPath Build/ -enableCodeCoverage YES clean build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" ONLY_ACTIVE_ARCH=NO | xcpretty
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: |
+          pod install
+      - name: Run tests
+        run: >
+          set -o pipefail && xcodebuild -workspace
+          MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer
+          -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 11'
+          -derivedDataPath Build/ -enableCodeCoverage YES clean build test
+          CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" ONLY_ACTIVE_ARCH=NO |
+          xcpretty
