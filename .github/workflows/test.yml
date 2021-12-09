@@ -18,6 +18,8 @@ jobs:
       - name: Install Dependencies
         run: |
           pod install
+      - name: Debug application path
+        run: ls -la /Applications/
       - name: Run tests
         run: >
           set -o pipefail && xcodebuild -workspace
