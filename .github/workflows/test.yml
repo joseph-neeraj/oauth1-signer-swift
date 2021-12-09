@@ -1,6 +1,6 @@
 name: Build & Test
 env:
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.4.app/Contents/Developer
 'on':
   push:
     branches:
@@ -18,8 +18,6 @@ jobs:
       - name: Install Dependencies
         run: |
           pod install
-      - name: Debug application path
-        run: ls -la /Applications/
       - name: Run tests
         run: >
           set -o pipefail && xcodebuild -workspace
