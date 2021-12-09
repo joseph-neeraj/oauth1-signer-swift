@@ -34,7 +34,7 @@ jobs:
         run: >
           set -o pipefail && xcodebuild -workspace
           MastercardOAuth1Signer.xcworkspace -scheme MastercardOAuth1Signer
-          -destination 'platform=iOS Simulator,OS=14.3,name=iPhone 11'
+          -destination 'platform=iOS Simulator,OS=14.4,name=iPhone 11'
           -derivedDataPath Build/ -enableCodeCoverage YES clean build test
           CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" ONLY_ACTIVE_ARCH=NO |
           xcpretty
@@ -52,7 +52,7 @@ jobs:
           -Dsonar.projectKey=Mastercard_oauth1-signer-swift -Dsonar.sources=.
           -Dsonar.swift.xcworkspace=MastercardOAuth1Signer.xcworkspace
           -Dsonar.swift.scheme=MastercardOAuth1Signer
-          -Dsonar.swift.simulator="platform=iOS Simulator,OS=14.3,name=iPhone
+          -Dsonar.swift.simulator="platform=iOS Simulator,OS=14.4,name=iPhone
           11" -Dsonar.cfamily.build-wrapper-output.bypass=true
           -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
           -Dsonar.coverageReportPaths=coverage.xml
