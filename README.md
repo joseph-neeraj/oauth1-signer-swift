@@ -163,11 +163,10 @@ class CustomURLSessionRequestBuilderFactory: RequestBuilderFactory {
 4. Open the generated `APIs.swift` and assign the `CustomURLSessionRequestBuilderFactory` to requestBuilderFactory in 'OpenAPIClientAPI' class.
 ```swift
     public static var requestBuilderFactory: RequestBuilderFactory = CustomURLSessionRequestBuilderFactory()
-
 ```
 
 See also:
-* [OpenAPI Generator (executable)](https://mvnrepository.com/artifact/org.openapitools/openapi-generator-cli)
+* [OpenAPI Generator CLI Installation](https://openapi-generator.tech/docs/installation/)
 * [CONFIG OPTIONS for swift4](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/swift4-deprecated.md)
 
 ## Authors
