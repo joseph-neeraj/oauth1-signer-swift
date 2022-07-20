@@ -167,7 +167,6 @@ class CustomURLSessionRequestBuilderFactory: RequestBuilderFactory {
 
 See also:
 * [OpenAPI Generator CLI Installation](https://openapi-generator.tech/docs/installation/)
-* [CONFIG OPTIONS for swift4](https://github.com/OpenAPITools/openapi-generator/blob/master/docs/generators/swift4-deprecated.md)
 
 ## Authors
 
